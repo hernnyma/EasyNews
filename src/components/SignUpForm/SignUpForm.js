@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import {signUp} from '../../utilities/users-service';
 
 export default class SignUpForm extends Component {
 
@@ -15,6 +16,26 @@ export default class SignUpForm extends Component {
           [evt.target.name]: evt.target.value,
           error: ''
         });
+      };
+
+      handleSubmit = async (evt) => {
+        // Prevent form from being submitted to the server
+        evt.preventDefault();
+        try {
+            const formData = {...this.state};
+            delete formData.error;
+            delete formData.confirm;
+            delete formData.error;
+            // The promise returned by the signUp service method 
+            // will resolve to the user object included in the
+            // payload of the JSON Web Token (JWT)
+            const user = await signUp(formData);
+            // Baby step!
+            console.log(user)
+        } catch {
+          // An error occurred 
+          this.setState({ error: 'Sign Up Failed - Try Again' });
+        }
       };
       
 
