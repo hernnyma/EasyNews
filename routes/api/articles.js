@@ -8,5 +8,6 @@ const articlesCtrl = require('../../controllers/api/articles');
 // POST /api/articles
 router.get('/', articlesCtrl.getAll);
 router.post('/save', articlesCtrl.saveArticle)
+router.get('/user', articlesCtrl.getUserArticles)
 
 module.exports = router;

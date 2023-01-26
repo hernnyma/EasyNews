@@ -9,6 +9,12 @@ export async function getArticles() {
     return articles;
   }
 
+  export async function getUserArticles() {
+    const articles = await articlesAPI.getUserArticles();
+    return articles
+  }
+
   export async function saveArticle(article) {
-    const saveArticle = await articlesAPI.saveArticle(article);
+    const savedArticle = await articlesAPI.saveArticle(article);
+    return savedArticle
   }

@@ -12,3 +12,7 @@ export function getArticles(articles) {
 export function saveArticle(article) {
     return sendRequest(BASE_URL + '/save', 'POST', article)
 }
+
+export function getUserArticles() {
+    return sendRequest(BASE_URL + '/user')
+}

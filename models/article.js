@@ -6,7 +6,7 @@ const articleSchema = new Schema({
   articlelink: String,
   articleimg: String,
   notes: String,
-  id: String
+  userId: String
 }, {
   timestamps: true
 });

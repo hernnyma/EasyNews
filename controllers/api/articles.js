@@ -9,6 +9,7 @@ const currentArticles = ('../../articles.js')
 module.exports = {
   getAll,
   saveArticle,
+  getUserArticles
 
 };
 
@@ -95,5 +96,23 @@ async function saveArticle(req, res) {
     console.log('waiting to save')
     console.log(req.body)
     console.log(req.user._id)
+    let user = req.user._id
+    Article.create(req.body, function(err, article) {
+        article.userId = user
+        article.save()
+        res.status(200).json(true)
+        if (err) {
+            res.status(400).json(err)
+        }
+    })
+}
 
+async function getUserArticles(req, res) {
+    console.log('hitting user articles get')
+    let user = req.user._id
+    console.log(user)
+    Article.find({userId: user}, function (err, article) {
+        console.log(article)
+        res.status(200).json(article)
+    })
 }

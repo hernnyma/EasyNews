@@ -9,6 +9,9 @@ export default function Article({title, link, img }) {
         notes: ''
 
     })
+    const [saved, setSaved] = useState(false)
+
+
     // console.log(title)
     // console.log(link)
     // console.log(img)
@@ -21,6 +24,7 @@ export default function Article({title, link, img }) {
         console.log(note)
         const saved = await articlesService.saveArticle(note)
         console.log(saved)
+        setSaved(saved)
     }
 
 
@@ -34,7 +38,7 @@ export default function Article({title, link, img }) {
         <form autoComplete="off" onSubmit={handleSubmit}>
           <label>Notes: </label>
           <input type="text" name="notes" value={note.notes} onChange={handleChange} />
-          <button type="submit">Add Note</button>
+          <button type="submit">{saved ? 'Saved' : 'Add Note'}</button>
         </form>
     </div>
     )
