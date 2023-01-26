@@ -12,6 +12,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.8.4",
     "morgan": "^1.10.0",
+    "node-polyfill-webpack-plugin": "^2.0.1",
     "puppeteer": "^19.6.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -24,7 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "articles": "node articles"
   },
   "eslintConfig": {
     "extends": [
