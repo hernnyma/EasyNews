@@ -9,7 +9,9 @@ const currentArticles = ('../../articles.js')
 module.exports = {
   getAll,
   saveArticle,
-  getUserArticles
+  getUserArticles,
+  updateNote,
+  deleteArticle,
 
 };
 
@@ -108,11 +110,30 @@ async function saveArticle(req, res) {
 }
 
 async function getUserArticles(req, res) {
-    console.log('hitting user articles get')
+    //console.log('hitting user articles get')
     let user = req.user._id
-    console.log(user)
+    //console.log(user)
     Article.find({userId: user}, function (err, article) {
-        console.log(article)
+        //console.log(article)
         res.status(200).json(article)
+    })
+}
+async function updateNote(req, res) {
+    console.log('hit me error baby')
+    console.log(req.body)
+    Article.findById(req.body.id, function (err, article) {
+        console.log(article)
+        article.notes = req.body.notes
+        console.log(article)
+        article.save()
+        res.status(200).json(article)
+    })
+}
+
+async function deleteArticle(req, res) {
+    console.log("hitting delete")
+    console.log(req.params.id)
+    Article.findByIdAndDelete(req.params.id, function (err, article) {
+        res.status(200)
     })
 }

@@ -18,3 +18,12 @@ export async function getArticles() {
     const savedArticle = await articlesAPI.saveArticle(article);
     return savedArticle
   }
+
+  export async function updateNote(updateNote) {
+    const noteUpdated = await articlesAPI.updateNote(updateNote)
+    return noteUpdated
+  }
+
+  export async function deleteArticle(id) {
+    await articlesAPI.deleteArticle(id)
+  }

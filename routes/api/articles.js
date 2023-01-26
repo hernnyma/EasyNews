@@ -9,5 +9,7 @@ const articlesCtrl = require('../../controllers/api/articles');
 router.get('/', articlesCtrl.getAll);
 router.post('/save', articlesCtrl.saveArticle)
 router.get('/user', articlesCtrl.getUserArticles)
+router.post('/updateNote', articlesCtrl.updateNote)
+router.post('/:id', articlesCtrl.deleteArticle)
 
 module.exports = router;

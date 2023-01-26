@@ -16,3 +16,10 @@ export function saveArticle(article) {
 export function getUserArticles() {
     return sendRequest(BASE_URL + '/user')
 }
+
+export function updateNote(updateNote) {
+    return sendRequest(BASE_URL + '/updateNote', 'POST', updateNote)
+}
+export function deleteArticle(id) {
+    return sendRequest(`${BASE_URL}/${id}`, 'POST')
+}
