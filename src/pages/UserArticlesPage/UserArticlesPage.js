@@ -2,6 +2,7 @@ import * as userServices from '../../utilities/users-service'
 import * as articlesServices from '../../utilities/articles-services'
 import UserArticle from '../../components/UserArticle/UserArticle'
 import { useState, useEffect } from 'react'
+import './UserArticlesPage.css'
 
 export default function UserArticlesPage() {
   const [userArticles, setUserArticles] = useState([])
@@ -38,11 +39,9 @@ export default function UserArticlesPage() {
   // }
 
     return (
-      <div className="UserArticlesPage">
+      <div className="header">
         <h1>UserArticlesPage</h1>
         {article}
       </div>
     );
   }
-
-  //<button onClick={handleGetArticles}>Get my Article/Notes</button>
