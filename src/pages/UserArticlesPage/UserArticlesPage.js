@@ -40,7 +40,6 @@ export default function UserArticlesPage() {
     return (
       <div className="UserArticlesPage">
         <h1>UserArticlesPage</h1>
-        <button onClick={handleCheckToken}>Check When My Login Expires</button>
         {article}
       </div>
     );

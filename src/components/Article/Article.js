@@ -1,5 +1,10 @@
 import {useState} from 'react'
 import * as articlesService from '../../utilities/articles-services'
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Form from 'react-bootstrap/Form'
+import FloatingLabel from 'react-bootstrap/FloatingLabel'
+import './Article.css'
 
 export default function Article({title, link, img }) {
     const [note, setNote] = useState({
@@ -30,16 +35,30 @@ export default function Article({title, link, img }) {
 
     return (
     <div>
-        <a href={link}> 
-            <div style={{"background": `url(${img}) no-repeat center center`, "WebkitBackgroundSize": "cover", "padding": "50px",}}> 
-            <h1>{title}</h1>
-            </div>
-        </a>
-        <form autoComplete="off" onSubmit={handleSubmit}>
-          <label>Notes: </label>
-          <input type="text" name="notes" value={note.notes} onChange={handleChange} />
-          <button type="submit">{saved ? 'Saved' : 'Add Note'}</button>
-        </form>
+        <Card style={{ width: '50rem', height: 'auto' }}>
+            <Card.Img variant='top' />
+            <Card.Body>
+                <a href={link}> 
+                    <div style={{"background": `url(${img}) no-repeat center center`, "WebkitBackgroundSize": "cover", "padding": "50px",}}> 
+                    <h1 className='text'>{title}</h1>
+                    </div>
+                </a>
+            </Card.Body>
+        </Card>
+        <Form autoComplete="off" onSubmit={handleSubmit}>
+            <Form.Group>
+          <FloatingLabel controlId='floatingInput' label="Add Note" className='mb-3' >
+            <Form.Control type="text" name="notes" value={note.notes} onChange={handleChange} />
+          </FloatingLabel>
+          <Button variant="primary" type="submit">{saved ? 'Saved' : 'Add Note'}</Button>
+            </Form.Group>
+        </Form>
     </div>
     )
 }
+
+{/* <a href={link}> 
+<div style={{"background": `url(${img}) no-repeat center center`, "WebkitBackgroundSize": "cover", "padding": "50px",}}> 
+<h1>{title}</h1>
+</div>
+</a> */}

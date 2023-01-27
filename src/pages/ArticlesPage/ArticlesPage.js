@@ -11,7 +11,7 @@ useEffect(function() {
     setArticles(articlearray)
   }
   getArticles()
-  
+
 }, [])
 
   const article = articles.map((element,idx) => (<Article  title={element.title} link={element.link} img={element.img} idx={idx}/>))
@@ -23,7 +23,7 @@ useEffect(function() {
 
     return (
       <div className="ArticlesPage">
-        ArticlesPage
+        <h1>Articles</h1>
         <br/>
         {article}
       </div>

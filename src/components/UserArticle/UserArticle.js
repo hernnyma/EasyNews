@@ -1,5 +1,10 @@
 import {useState} from 'react'
 import * as articlesService from '../../utilities/articles-services'
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Form from 'react-bootstrap/Form'
+import FloatingLabel from 'react-bootstrap/FloatingLabel'
+import './UserArticle.css'
 
 export default function UserArticle({title, link, img, note, idx, deleteArticle }) {
     const [updateNote, setUpdateNote] = useState({
@@ -31,18 +36,26 @@ export default function UserArticle({title, link, img, note, idx, deleteArticle 
 
     return (
     <div>
+        <Card style={{ width: '50rem' }}>
+        <Card.Img variant="top" />
+        <Card.Body>
         <a href={link}> 
             <div style={{"background": `url(${img}) no-repeat center center`, "WebkitBackgroundSize": "cover", "padding": "50px",}}> 
-            <h1>{title}</h1>
+            <h1 className='text'>{title}</h1>
             </div>
         </a>
+        </Card.Body>
+        </Card>
         <h1>{updateNote.notes}</h1>
-        <form autoComplete="off" onSubmit={handleSubmit}>
-          <label>Update Note: </label>
-          <input type="text" name="notes" value={setUpdateNote.notes} onChange={handleNoteChange} />
-          <button type="submit">Update</button>
-        </form>
-        <button onClick={handleDeleteArticle}>Delete Article</button>
+        <Form autoComplete="off" onSubmit={handleSubmit}>
+          <Form.Group>
+            <FloatingLabel controlId='floatingInput' label="Update Note" className='mb-3'>
+          <Form.Control type="text" name="notes" value={setUpdateNote.notes} onChange={handleNoteChange} />
+          </FloatingLabel>
+          </Form.Group>
+          <Button variant="primary" type="submit">Update</Button>
+        </Form>
+        <Button variant='secondary' onClick={handleDeleteArticle}>Delete Article</Button>
     </div>
     )
 }
