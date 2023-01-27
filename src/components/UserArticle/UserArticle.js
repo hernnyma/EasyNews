@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import * as articlesService from '../../utilities/articles-services'
 
-export default function UserArticle({title, link, img, note, idx }) {
+export default function UserArticle({title, link, img, note, idx, deleteArticle }) {
     const [updateNote, setUpdateNote] = useState({
         id: idx,
         notes: note
@@ -25,7 +25,7 @@ export default function UserArticle({title, link, img, note, idx }) {
     }
 
     async function handleDeleteArticle() {
-        await articlesService.deleteArticle(updateNote.id)
+        deleteArticle(updateNote.id)
     }
 
 
