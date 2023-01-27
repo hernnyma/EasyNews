@@ -29,4 +29,3 @@ useEffect(function() {
       </div>
     );
   }
- //<button onClick={getArticles}>Get Articles</button>

@@ -3,8 +3,6 @@ const puppeteer = require('puppeteer')
 const Article = require('../../models/article');
 
 const currentArticles = ('../../articles.js')
-//const User = require('../../models/user');
-//const bcrypt = require('bcrypt');
 
 module.exports = {
   getAll,
