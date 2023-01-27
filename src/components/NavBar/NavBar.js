@@ -1,6 +1,9 @@
 
 import { Link } from 'react-router-dom';
 import * as userService from '../../utilities/users-service';
+import Container from 'react-bootstrap/Container'
+import Button from 'react-bootstrap/Button'
+import './NavBar.css'
 
 export default function NavBar({user, setUser}) {
 
@@ -12,12 +15,13 @@ export default function NavBar({user, setUser}) {
   }
 
   return (
-    <nav>
-      <Link to="/articles">Articles</Link>
-      &nbsp; | &nbsp;
-      <Link to="/articles/user">User Articles</Link>
+    <Container className='layout'>
+      <Button variant="primary"><Link to="/articles" className='buttonlink'>Articles</Link></Button>
+      &nbsp;  &nbsp;
+      <Button variant="primary"><Link to="/articles/user" className='buttonlink'>User Articles</Link></Button>
+      &nbsp;  &nbsp;
+      <Button variant="secondary" ><Link to="" onClick={handleLogOut} className='buttonlink'>Log Out</Link></Button>
       &nbsp;&nbsp;<span>Welcome, {user.name}</span>
-      &nbsp;&nbsp;<Link to="" onClick={handleLogOut}>Log Out</Link>
-    </nav>
+    </Container>
   );
 }

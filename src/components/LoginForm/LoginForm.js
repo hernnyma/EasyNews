@@ -1,7 +1,9 @@
-// LoginForm.jsx
-
 import { useState } from 'react';
 import * as usersService from '../../utilities/users-service';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import FloatingLabel from 'react-bootstrap/FloatingLabel'
+import './LoginForm.css'
 
 export default function LoginForm({ setUser }) {
   const [credentials, setCredentials] = useState({
@@ -30,17 +32,20 @@ export default function LoginForm({ setUser }) {
   }
 
   return (
-    <div>
-      <div className="form-container">
-        <form autoComplete="off" onSubmit={handleSubmit}>
-          <label>Email</label>
-          <input type="text" name="email" value={credentials.email} onChange={handleChange} required />
-          <label>Password</label>
-          <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
-          <button type="submit">LOG IN</button>
-        </form>
-      </div>
-      <p className="error-message">&nbsp;{error}</p>
+    <div className='form'>
+      <Form onSubmit={handleSubmit} autoComplete="off">
+        <Form.Group className='mb-3' controlId="formBasicEmail">
+          <FloatingLabel controlId="floatingInput" label="Email address" className="mb-3">
+          <Form.Control type="text" name="email" value={credentials.email} onChange={handleChange} required placeholder='name@example.com'/>
+          </FloatingLabel>
+        </Form.Group>
+        <Form.Group>
+        <FloatingLabel controlId="floatingInput" label="Password" className="mb-3">
+          <Form.Control type="password" name="password" value={credentials.password} onChange={handleChange} required placeholder='Password'/>
+        </FloatingLabel>
+        </Form.Group>
+        <Button type="submit" variant="primary" size="lg">LOG IN</Button>{' '}
+      </Form>
     </div>
   );
 }

@@ -1,5 +1,8 @@
 import {Component} from 'react'
 import {signUp} from '../../utilities/users-service';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import FloatingLabel from 'react-bootstrap/FloatingLabel'
 
 export default class SignUpForm extends Component {
 
@@ -43,19 +46,35 @@ export default class SignUpForm extends Component {
         return (
           <div>
             <div className="form-container">
-              <form autoComplete="off" onSubmit={this.handleSubmit}>
-                <label>Name</label>
-                <input type="text" name="name" value={this.state.name} onChange={this.handleChange} required />
-                <label>Email</label>
-                <input type="email" name="email" value={this.state.email} onChange={this.handleChange} required />
-                <label>Password</label>
-                <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required />
-                <label>Confirm</label>
-                <input type="password" name="confirm" value={this.state.confirm} onChange={this.handleChange} required />
-                <button type="submit" disabled={disable}>SIGN UP</button>
-              </form>
+              <Form autoComplete="off" onSubmit={this.handleSubmit}>
+              
+                <Form.Group>
+                <FloatingLabel controlId="floatingInput" label="Name" className="mb-3">
+                <Form.Control type="text" name="name" value={this.state.name} onChange={this.handleChange} required placeholder='Your Name'/>
+                </FloatingLabel>
+                </Form.Group>
+
+                <Form.Group>
+                <FloatingLabel controlId="floatingInput" label="Email address" className="mb-3">
+                <Form.Control type="email" name="email" value={this.state.email} onChange={this.handleChange} required placeholder="Your Email"/>
+                </FloatingLabel>
+                </Form.Group>
+
+                <Form.Group>
+                <FloatingLabel controlId="floatingInput" label="Password" className="mb-3">
+                <Form.Control type="password" name="password" value={this.state.password} onChange={this.handleChange} required placeholder='Your Password'/>
+                </FloatingLabel>
+                </Form.Group>
+
+                <Form.Group>
+                <FloatingLabel controlId="floatingInput" label="Confirm Password" className="mb-3">
+                <Form.Control type="password" name="confirm" value={this.state.confirm} onChange={this.handleChange} required placeholder='Confirm Password'/>
+                </FloatingLabel>
+                </Form.Group>
+
+                <Button type="submit" disabled={disable} size="lg">SIGN UP</Button>
+              </Form>
             </div>
-            <p className="error-message">&nbsp;{this.state.error}</p>
           </div>
         );
       }

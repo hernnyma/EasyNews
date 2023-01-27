@@ -18,7 +18,7 @@ export default function UserArticlesPage() {
     console.log(id)
     await articlesServices.deleteArticle(id)
     console.log(userArticles)
-    const deletedArticle = userArticles.filter(element => (element._id != id))
+    const deletedArticle = userArticles.filter(element => (element._id !== id))
     console.log(deletedArticle)
     setUserArticles(deletedArticle)
     console.log(userArticles)
