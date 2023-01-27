@@ -19,7 +19,7 @@ async function getAll(req, res) {
     console.log('In getAll controller')
     let articles = []
 
-    const browser = await puppeteer.launch({headless: true});
+    const browser = await puppeteer.launch({args: ['--no-sandbox']});
     const page = await browser.newPage()
     await page.setUserAgent('Mozilla/5.0 (Linux; Android 9; HRY-LX1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4605.0 Mobile Safari/537.36')
     await page.goto('http://cbc.ca/')
@@ -27,7 +27,7 @@ async function getAll(req, res) {
     // console.log(articles)
     //a single article worth of info, will timeout if selectors are missing or err.
     //The Top article on the website - need to update regularly, as the formatt changes constantly, a video, a pic, one link, or two links in the card
-
+    //-----
     // let articleTop = new Object()
     // const article = await page.$eval(`#app div main div section:nth-child(1) div div.sectionContainer-main ul li:nth-child(1) div a:nth-child(2) div div.card-content-top h3`, el => el.innerText)
     // articleTop.title = article
@@ -35,10 +35,12 @@ async function getAll(req, res) {
     // // console.log(articlecontent)
     // const articlelink = await page.$eval(`#app div main div section:nth-child(1) div div.sectionContainer-main ul li:nth-child(1) div a`, el => el.href)
     // articleTop.link = articlelink
-    // //Top element of the card which changes formatt, no neccesarily a img, can be video
+
+     // //Top element of the card which changes formatt, no neccesarily a img, can be video
     // const articleimg = await page.$eval(`#app div main div section:nth-child(1) div div.sectionContainer-main ul li:nth-child(1) div a:nth-child(1) div figure div img`, el => el.src)
     // articleTop.img = articleimg
     // articles.push(articleTop)
+    //------
 
 
 
